@@ -1,0 +1,37 @@
+//SpringBoot
+//스프링부트 이니셜라이저 (https:://start.spring.io/)를 통해서 진행해도 됨
+buildscript {
+    //ext : 현재 그레이들에서 사용하는 전역변수 추가
+    ext {
+        springBootVersion = '2.1.7.RELEASE'
+    }
+
+    //라이브러리 업로드 난이도가 jcenter가 보다 쉬움
+    //자신이 만든 라이브러리 업로드 난이도 (mavenCentral >> jcenter)
+    repositories {
+        mavenCentral()
+        jcenter()
+    }
+
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+    }
+}
+
+//스프링부트 필수 플러그인들
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'io.spring.dependency-management'
+
+group 'org.kyjtheyj'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile('org.springframework.boot:spring-boot-starter-web')
+    testCompile('org.springframework.boot:spring-boot-starter-test')
+}
